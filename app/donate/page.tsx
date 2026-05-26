@@ -11,23 +11,21 @@ export const metadata: Metadata = {
 const methods = [
   {
     name: "GCash",
-    qr: "/qr-banks-donations/gcash.jpeg",
+    qr: "/qr-banks-donations/gcash.png",
     accent: "border-blue-200 bg-blue-50",
     badge: "bg-blue-100 text-blue-700",
-    account: "09XX-XXX-XXXX",
     instruction: "Open GCash → Send Money → Scan QR or enter number",
   },
   {
     name: "Maya",
-    qr: "/qr-banks-donations/maya.jpeg",
+    qr: "/qr-banks-donations/maya.png",
     accent: "border-green-200 bg-green-50",
     badge: "bg-green-100 text-green-700",
-    account: "09XX-XXX-XXXX",
     instruction: "Open Maya → Pay → Scan QR or enter number",
   },
   {
     name: "GoTyme",
-    qr: "/qr-banks-donations/gotyme.jpeg",
+    qr: "/qr-banks-donations/gotyme.png",
     accent: "border-orange-200 bg-orange-50",
     badge: "bg-orange-100 text-orange-700",
     account: "Account details on QR",
@@ -35,7 +33,7 @@ const methods = [
   },
   {
     name: "Maribank",
-    qr: "/qr-banks-donations/maribank.jpeg",
+    qr: "/qr-banks-donations/maribank.png",
     accent: "border-red-200 bg-red-50",
     badge: "bg-red-100 text-red-700",
     account: "Account details on QR",
@@ -43,7 +41,7 @@ const methods = [
   },
   {
     name: "RCBC",
-    qr: "/qr-banks-donations/rcbc.jpeg",
+    qr: "/qr-banks-donations/rcbc.png",
     accent: "border-yellow-200 bg-yellow-50",
     badge: "bg-yellow-100 text-yellow-700",
     account: "Account details on QR",
