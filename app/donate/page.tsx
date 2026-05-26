@@ -116,7 +116,7 @@ export default function DonatePage() {
               {/* QR code */}
               <div className="relative w-40 h-40 rounded-xl overflow-hidden bg-white shadow-sm ring-1 ring-black/5">
                 <Image
-                  src={method.qr}
+                  src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${method.qr}`}
                   alt={`${method.name} QR code`}
                   fill
                   className="object-cover"

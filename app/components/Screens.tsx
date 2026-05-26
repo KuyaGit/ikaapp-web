@@ -1,28 +1,30 @@
 import Image from "next/image";
 
+const bp = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 const screens = [
   {
-    src: "/screenshots/home.png",
+    src: `${bp}/screenshots/home.png`,
     label: "Dashboard",
     description: "Income, savings & budget overview",
   },
   {
-    src: "/screenshots/savings.png",
+    src: `${bp}/screenshots/savings.png`,
     label: "Savings",
     description: "Track progress toward your goal",
   },
   {
-    src: "/screenshots/expenses.png",
+    src: `${bp}/screenshots/expenses.png`,
     label: "Expenses",
     description: "Monitor daily spending",
   },
   {
-    src: "/screenshots/tithes.png",
+    src: `${bp}/screenshots/tithes.png`,
     label: "Tithes & Blessings",
     description: "Weekly blessings & tithe calculation",
   },
   {
-    src: "/screenshots/settings.png",
+    src: `${bp}/screenshots/settings.png`,
     label: "Budget Settings",
     description: "Income, categories & pay schedule",
   },
