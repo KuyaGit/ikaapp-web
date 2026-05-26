@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
@@ -18,9 +20,9 @@ export default function Navbar() {
           <a href="#download" className="hover:text-gray-900 transition-colors">
             Download
           </a>
-          <a href="/donate" className="flex items-center gap-1.5 text-rose-500 hover:text-rose-600 font-medium transition-colors">
+          <Link href="/donate" className="flex items-center gap-1.5 text-rose-500 hover:text-rose-600 font-medium transition-colors">
             🙏 Love Gift
-          </a>
+          </Link>
         </nav>
 
         <a

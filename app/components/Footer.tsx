@@ -1,12 +1,14 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="border-t border-gray-100 bg-white">
       {/* Love gift strip */}
       <div className="bg-rose-50 border-b border-rose-100 py-3 px-6 text-center text-sm text-rose-600">
         ikaapp is free forever.{" "}
-        <a href="/donate" className="font-semibold underline underline-offset-2 hover:text-rose-700 transition-colors">
+        <Link href="/donate" className="font-semibold underline underline-offset-2 hover:text-rose-700 transition-colors">
           Send a love gift 🙏
-        </a>{" "}
+        </Link>{" "}
         if it has blessed you.
       </div>
 
