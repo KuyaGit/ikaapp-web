@@ -28,7 +28,8 @@ export default function DownloadCTA() {
         </p>
 
         <a
-          href="#"
+          href="/ikaapp-web/apk/ikaapp-latest.apk"
+          download="ikaapp-latest.apk"
           className="inline-flex items-center justify-center gap-3 bg-teal-500 hover:bg-teal-400 text-gray-900 font-bold px-10 py-4 rounded-2xl transition-colors text-lg"
         >
           <svg
