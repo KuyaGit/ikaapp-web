@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ikaapp — Personal Finance for Christians Follower of Bible Principles",
+  title: "ikaapp — Personal Budgeting App Based on Biblical Financial Principles",
   description:
     "Allocate your salary across savings, expenses, and tithes. Track goals, log blessings, and calculate tithes — 100% offline, no account needed.",
 };
