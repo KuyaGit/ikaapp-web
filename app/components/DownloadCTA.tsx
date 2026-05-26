@@ -1,3 +1,8 @@
+const APK_URL =
+  process.env.NODE_ENV === "production"
+    ? "/ikaapp-web/apk/ikaapp-latest.apk"
+    : "/apk/ikaapp-latest.apk";
+
 export default function DownloadCTA() {
   return (
     <section id="download" className="py-28 bg-gray-900 relative overflow-hidden">
@@ -28,7 +33,7 @@ export default function DownloadCTA() {
         </p>
 
         <a
-          href="/ikaapp-web/apk/ikaapp-latest.apk"
+          href={APK_URL}
           download="ikaapp-latest.apk"
           className="inline-flex items-center justify-center gap-3 bg-teal-500 hover:bg-teal-400 text-gray-900 font-bold px-10 py-4 rounded-2xl transition-colors text-lg"
         >
