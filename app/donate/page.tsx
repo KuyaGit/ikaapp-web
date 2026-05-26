@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -10,48 +11,43 @@ export const metadata: Metadata = {
 const methods = [
   {
     name: "GCash",
-    color: "bg-blue-50 border-blue-100",
-    labelColor: "text-blue-700",
-    iconBg: "bg-blue-100",
-    icon: (
-      <svg className="w-6 h-6 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z" />
-      </svg>
-    ),
-    label: "GCash Number",
-    value: "09XX-XXX-XXXX",
-    name2: "Account Name: Your Name Here",
-    instruction: "Open GCash → Send Money → Enter number → Enter amount",
+    qr: "/qr-banks-donations/gcash.jpeg",
+    accent: "border-blue-200 bg-blue-50",
+    badge: "bg-blue-100 text-blue-700",
+    account: "09XX-XXX-XXXX",
+    instruction: "Open GCash → Send Money → Scan QR or enter number",
   },
   {
     name: "Maya",
-    color: "bg-green-50 border-green-100",
-    labelColor: "text-green-700",
-    iconBg: "bg-green-100",
-    icon: (
-      <svg className="w-6 h-6 text-green-600" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm0 18a8 8 0 110-16 8 8 0 010 16zm-1-6h2v2h-2zm0-8h2v6h-2z" />
-      </svg>
-    ),
-    label: "Maya Number",
-    value: "09XX-XXX-XXXX",
-    name2: "Account Name: Your Name Here",
-    instruction: "Open Maya → Pay → Enter number → Enter amount",
+    qr: "/qr-banks-donations/maya.jpeg",
+    accent: "border-green-200 bg-green-50",
+    badge: "bg-green-100 text-green-700",
+    account: "09XX-XXX-XXXX",
+    instruction: "Open Maya → Pay → Scan QR or enter number",
   },
   {
-    name: "Bank Transfer",
-    color: "bg-teal-50 border-teal-100",
-    labelColor: "text-teal-700",
-    iconBg: "bg-teal-100",
-    icon: (
-      <svg className="w-6 h-6 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
-      </svg>
-    ),
-    label: "BDO / BPI / UnionBank",
-    value: "Account No: XXXX-XXXX-XXXX",
-    name2: "Account Name: Your Name Here",
-    instruction: "Use InstaPay or PESONet for zero-fee transfers between banks",
+    name: "GoTyme",
+    qr: "/qr-banks-donations/gotyme.jpeg",
+    accent: "border-orange-200 bg-orange-50",
+    badge: "bg-orange-100 text-orange-700",
+    account: "Account details on QR",
+    instruction: "Open GoTyme → Send → Scan QR code",
+  },
+  {
+    name: "Maribank",
+    qr: "/qr-banks-donations/maribank.jpeg",
+    accent: "border-red-200 bg-red-50",
+    badge: "bg-red-100 text-red-700",
+    account: "Account details on QR",
+    instruction: "Open Maribank → Transfer → Scan QR code",
+  },
+  {
+    name: "RCBC",
+    qr: "/qr-banks-donations/rcbc.jpeg",
+    accent: "border-yellow-200 bg-yellow-50",
+    badge: "bg-yellow-100 text-yellow-700",
+    account: "Account details on QR",
+    instruction: "Open RCBC → Transfer → Scan QR code",
   },
 ];
 
@@ -78,16 +74,16 @@ export default function DonatePage() {
         </div>
       </header>
 
-      <main className="max-w-2xl mx-auto px-6 py-20">
+      <main className="max-w-3xl mx-auto px-6 py-20">
         {/* Hero */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-14">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-rose-50 border border-rose-100 mb-6 text-3xl">
             🙏
           </div>
           <h1 className="text-4xl font-bold text-gray-900 tracking-tight mb-4">
             Send a Love Gift
           </h1>
-          <p className="text-lg text-gray-500 leading-relaxed">
+          <p className="text-lg text-gray-500 leading-relaxed max-w-xl mx-auto">
             ikaapp is free, ad-free, and will always stay that way.
             If it has helped you manage your finances and honor God with
             your money, your love gift — however small — means the world.
@@ -104,29 +100,39 @@ export default function DonatePage() {
           <p className="mt-3 text-sm text-teal-600 font-medium">2 Corinthians 9:7</p>
         </div>
 
-        {/* Payment methods */}
-        <div className="space-y-4 mb-12">
+        {/* QR code grid */}
+        <p className="text-center text-sm text-gray-400 mb-6 uppercase tracking-widest font-medium">
+          Scan to send a love gift
+        </p>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 mb-12">
           {methods.map((method) => (
             <div
               key={method.name}
-              className={`rounded-2xl border p-6 ${method.color}`}
+              className={`rounded-2xl border p-4 flex flex-col items-center gap-3 ${method.accent}`}
             >
-              <div className="flex items-start gap-4">
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${method.iconBg}`}>
-                  {method.icon}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className={`text-xs font-semibold uppercase tracking-wider mb-1 ${method.labelColor}`}>
-                    {method.name}
-                  </div>
-                  <div className="text-xl font-bold text-gray-900 font-mono tracking-wide">
-                    {method.value}
-                  </div>
-                  <div className="text-sm text-gray-600 mt-0.5">{method.name2}</div>
-                  <div className="mt-3 text-xs text-gray-500 leading-relaxed">
-                    {method.instruction}
-                  </div>
-                </div>
+              {/* Bank name badge */}
+              <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full ${method.badge}`}>
+                {method.name}
+              </span>
+
+              {/* QR code */}
+              <div className="relative w-40 h-40 rounded-xl overflow-hidden bg-white shadow-sm ring-1 ring-black/5">
+                <Image
+                  src={method.qr}
+                  alt={`${method.name} QR code`}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+
+              {/* Account info */}
+              <div className="text-center">
+                <p className="text-xs font-semibold text-gray-700 font-mono">
+                  {method.account}
+                </p>
+                <p className="text-xs text-gray-400 mt-1 leading-snug">
+                  {method.instruction}
+                </p>
               </div>
             </div>
           ))}
