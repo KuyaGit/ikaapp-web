@@ -9,32 +9,38 @@ const screens = [
   {
     src: `${bp}/screenshots/home.png`,
     label: "Dashboard",
-    description: "Income, savings & budget overview",
+    description: "Payday status, income overview & period budget progress",
     glow: "13, 148, 136",   // teal-600
   },
   {
     src: `${bp}/screenshots/savings.png`,
     label: "Savings",
-    description: "Track progress toward your goal",
+    description: "Monthly savings goal with bank tags & all-time trend",
     glow: "22, 163, 74",    // green-600
   },
   {
     src: `${bp}/screenshots/expenses.png`,
     label: "Expenses",
-    description: "Monitor daily spending",
+    description: "Period expense tracking with over-budget alerts",
     glow: "234, 88, 12",    // orange-600
   },
   {
     src: `${bp}/screenshots/tithes.png`,
     label: "Tithes & Blessings",
-    description: "Weekly blessings & tithe calculation",
+    description: "Weekly income groups with auto tithe calculation",
     glow: "79, 70, 229",    // indigo-600
   },
   {
     src: `${bp}/screenshots/settings.png`,
     label: "Budget Settings",
-    description: "Income, categories & pay schedule",
+    description: "Custom categories, allocation % & pay schedule",
     glow: "2, 132, 199",    // sky-600
+  },
+  {
+    src: `${bp}/screenshots/income-history.png`,
+    label: "Income History",
+    description: "Monthly blessing totals — tap the income card to open",
+    glow: "59, 130, 246",   // blue-500
   },
 ];
 

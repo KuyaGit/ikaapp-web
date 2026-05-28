@@ -18,9 +18,8 @@ export default function Hero() {
           {/* Left — text */}
           <div className="flex flex-col gap-8">
             <span className="inline-flex items-center gap-2 w-fit px-4 py-1.5 rounded-full bg-teal-50 border border-teal-100 text-teal-700 text-sm font-medium">
-              🇵🇭 Built for Christians Follower of Bible Principles
+              🇵🇭 Built for Filipino Christians · iOS &amp; Android
             </span>
-
             <h1 className="text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 leading-[1.08]">
               Your salary,
               <br />
@@ -31,8 +30,9 @@ export default function Hero() {
             </h1>
 
             <p className="text-lg text-gray-500 leading-relaxed max-w-md">
-              Allocate your pay across savings, expenses, and tithes — all synced
-              to your payday. Works 100% offline, no account needed.
+              Allocate your salary across savings, expenses, and tithes — synced
+              to your payday schedule. Tracks blessings, auto-calculates tithes,
+              and sends payday reminders. 100% offline, no account needed.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">
@@ -40,20 +40,10 @@ export default function Hero() {
                 href="#download"
                 className="inline-flex items-center justify-center gap-2.5 bg-teal-600 hover:bg-teal-700 text-white font-semibold px-7 py-3.5 rounded-xl transition-colors text-base"
               >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                  />
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
-                Download APK (Android)
+                Download APK
               </a>
               <a
                 href="#features"
@@ -68,7 +58,7 @@ export default function Hero() {
                 "Free forever",
                 "No ads",
                 "No account",
-                "Android v1.0.0",
+                "v1.3.2",
               ].map((label) => (
                 <div key={label} className="flex items-center gap-1.5">
                   <svg
@@ -130,7 +120,7 @@ export default function Hero() {
                   <div className="text-xs text-gray-400 leading-none mb-0.5">
                     Total Savings
                   </div>
-                  <div className="text-sm font-bold text-gray-900">₱12,450</div>
+                  <div className="text-sm font-bold text-gray-900">₱3,200</div>
                 </div>
               </div>
 
@@ -143,7 +133,7 @@ export default function Hero() {
                   <div className="text-xs text-gray-400 leading-none mb-0.5">
                     Savings Goal
                   </div>
-                  <div className="text-sm font-bold text-gray-900">78% done</div>
+                  <div className="text-sm font-bold text-gray-900">80% done</div>
                 </div>
               </div>
             </div>

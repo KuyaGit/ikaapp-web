@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ikaapp — Personal Budgeting App Based on Biblical Financial Principles",
+  title: "ikaapp — Biblical Budgeting for Filipino Christians",
   description:
-    "Allocate your salary across savings, expenses, and tithes. Track goals, log blessings, and calculate tithes — 100% offline, no account needed.",
+    "Allocate your salary across savings, expenses, and tithes. Auto-calculate weekly tithes from blessings, track savings goals, get payday notifications — 100% offline, no account needed. iOS & Android.",
 };
 
 export default function RootLayout({

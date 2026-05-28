@@ -1,29 +1,8 @@
-import { createHmac } from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 
-const SECRET = process.env.CAPTCHA_SECRET ?? "dev-secret-ikaapp";
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const GITHUB_OWNER = process.env.GITHUB_OWNER ?? "KuyaGit";
 const GITHUB_REPO = process.env.GITHUB_REPO ?? "ikaapp-web";
-
-function verifyCaptcha(token: string, answer: string): boolean {
-  try {
-    const raw = Buffer.from(token, "base64").toString("utf-8");
-    const { x, op, y, ts, hmac } = JSON.parse(raw);
-
-    // Challenge expires after 15 minutes
-    if (Date.now() - Number(ts) > 15 * 60 * 1000) return false;
-
-    const expected: number = op === "+" ? x + y : x - y;
-    const expectedHmac = createHmac("sha256", SECRET)
-      .update(`${expected}:${ts}`)
-      .digest("hex");
-
-    return hmac === expectedHmac && Number(answer.trim()) === expected;
-  } catch {
-    return false;
-  }
-}
 
 async function uploadScreenshot(
   base64Content: string,
@@ -60,16 +39,6 @@ export async function POST(request: NextRequest) {
   // Honeypot — bots fill this, humans don't
   if (formData.get("website")) {
     return NextResponse.json({ error: "Spam detected." }, { status: 400 });
-  }
-
-  // CAPTCHA
-  const captchaToken = String(formData.get("captchaToken") ?? "");
-  const captchaAnswer = String(formData.get("captchaAnswer") ?? "");
-  if (!verifyCaptcha(captchaToken, captchaAnswer)) {
-    return NextResponse.json(
-      { error: "CAPTCHA answer is incorrect. Please try again." },
-      { status: 400 }
-    );
   }
 
   if (!GITHUB_TOKEN) {

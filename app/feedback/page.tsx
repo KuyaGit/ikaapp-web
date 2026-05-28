@@ -3,14 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "../components/Navbar";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 
 type IssueType = "bug" | "feature";
-
-interface Captcha {
-  question: string;
-  token: string;
-}
 
 interface SubmitResult {
   issueUrl: string;
@@ -25,8 +20,6 @@ export default function FeedbackPage() {
   const [expected, setExpected] = useState("");
   const [device, setDevice] = useState("");
   const [email, setEmail] = useState("");
-  const [captcha, setCaptcha] = useState<Captcha | null>(null);
-  const [captchaAnswer, setCaptchaAnswer] = useState("");
   const [screenshot, setScreenshot] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -34,19 +27,6 @@ export default function FeedbackPage() {
   const [result, setResult] = useState<SubmitResult | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const dropRef = useRef<HTMLDivElement>(null);
-
-  const fetchCaptcha = useCallback(async () => {
-    try {
-      const res = await fetch("/api/captcha");
-      const data: Captcha = await res.json();
-      setCaptcha(data);
-      setCaptchaAnswer("");
-    } catch {
-      // silent — retry on submit
-    }
-  }, []);
-
-  useEffect(() => { fetchCaptcha(); }, [fetchCaptcha]);
 
   useEffect(() => {
     if (!screenshot) { setPreviewUrl(null); return; }
@@ -63,8 +43,6 @@ export default function FeedbackPage() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!captcha) { setErrorMsg("CAPTCHA not loaded. Please refresh."); return; }
-
     setStatus("loading");
     setErrorMsg("");
 
@@ -76,8 +54,6 @@ export default function FeedbackPage() {
     fd.append("expected", expected);
     fd.append("device", device);
     fd.append("email", email);
-    fd.append("captchaToken", captcha.token);
-    fd.append("captchaAnswer", captchaAnswer);
     fd.append("website", ""); // honeypot — must stay empty
     if (screenshot) fd.append("screenshot", screenshot);
 
@@ -88,7 +64,6 @@ export default function FeedbackPage() {
       if (!res.ok || !data.success) {
         setStatus("error");
         setErrorMsg(data.error ?? "Something went wrong. Please try again.");
-        if (data.error?.toLowerCase().includes("captcha")) fetchCaptcha();
         return;
       }
 
@@ -139,7 +114,6 @@ export default function FeedbackPage() {
                   setEmail("");
                   setScreenshot(null);
                   setResult(null);
-                  fetchCaptcha();
                 }}
                 className="inline-flex items-center justify-center gap-2 border border-gray-200 hover:border-gray-300 text-gray-600 font-semibold px-6 py-3 rounded-xl transition-colors"
               >
@@ -365,47 +339,6 @@ export default function FeedbackPage() {
               />
             </div>
 
-            {/* CAPTCHA */}
-            <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-              <div className="flex items-start gap-4">
-                <div className="w-9 h-9 rounded-xl bg-teal-50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg className="w-4 h-4 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-                  </svg>
-                </div>
-                <div className="flex-1">
-                  <p className="text-sm font-semibold text-gray-700 mb-0.5">Human Verification</p>
-                  {captcha ? (
-                    <>
-                      <p className="text-sm text-gray-500 mb-3">{captcha.question}</p>
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="number"
-                          value={captchaAnswer}
-                          onChange={e => setCaptchaAnswer(e.target.value)}
-                          placeholder="Your answer"
-                          required
-                          className="w-32 px-4 py-2.5 rounded-xl border border-gray-200 focus:border-teal-400 focus:ring-2 focus:ring-teal-100 outline-none text-sm text-gray-900 placeholder-gray-400 transition"
-                        />
-                        <button
-                          type="button"
-                          onClick={fetchCaptcha}
-                          className="text-xs text-teal-600 hover:text-teal-800 font-medium flex items-center gap-1 transition-colors"
-                        >
-                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-                          </svg>
-                          New question
-                        </button>
-                      </div>
-                    </>
-                  ) : (
-                    <p className="text-sm text-gray-400 animate-pulse">Loading…</p>
-                  )}
-                </div>
-              </div>
-            </div>
-
             {/* Error */}
             {status === "error" && (
               <div className="flex items-start gap-3 px-5 py-4 rounded-xl bg-red-50 border border-red-100 text-sm text-red-700">
@@ -422,7 +355,7 @@ export default function FeedbackPage() {
             {/* Submit */}
             <button
               type="submit"
-              disabled={status === "loading" || !captcha}
+              disabled={status === "loading"}
               className="w-full flex items-center justify-center gap-2.5 bg-teal-600 hover:bg-teal-700 disabled:bg-teal-300 text-white font-semibold px-6 py-3.5 rounded-xl transition-colors text-base"
             >
               {status === "loading" ? (

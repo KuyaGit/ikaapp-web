@@ -18,7 +18,7 @@ export default function DownloadCTA() {
 
       <div className="relative max-w-2xl mx-auto px-6 text-center">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-teal-900/60 text-teal-400 text-sm font-medium mb-8 border border-teal-800">
-          Android · v1.0.0 · Free · iOS coming soon
+          Android · v1.3.2 · Free · iOS coming soon
         </div>
 
         <h2 className="text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.1] mb-6">
@@ -79,8 +79,8 @@ export default function DownloadCTA() {
 
         <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-sm text-gray-600 border-t border-gray-800 pt-10">
           <div className="flex items-center gap-2">
-            <span className="text-teal-600 font-semibold">Expo 54</span>
-            <span>/ React Native 0.81</span>
+            <span className="text-teal-600 font-semibold">Expo ~54</span>
+            <span>/ React Native 0.81.5</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-teal-600 font-semibold">Local-first</span>
@@ -88,7 +88,7 @@ export default function DownloadCTA() {
           </div>
           <div className="flex items-center gap-2">
             <span className="text-teal-600 font-semibold">TypeScript</span>
-            <span>strict mode</span>
+            <span>strict · New Architecture</span>
           </div>
         </div>
       </div>

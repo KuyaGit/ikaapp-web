@@ -19,7 +19,7 @@ export default function Footer() {
         </div>
 
         <div className="text-center">
-          v1.0.0 &middot; Android &middot; Built with Expo &amp; React Native
+          v1.3.2 &middot; iOS &amp; Android &middot; Built with Expo &amp; React Native
         </div>
 
         <div>&copy; 2026 ikaapp. All data stays on your device.</div>
