@@ -89,7 +89,7 @@ export default function Screens() {
 
   useEffect(() => {
     if (paused) return;
-    const id = setInterval(next, 4000);
+    const id = setInterval(next, 2000);
     return () => clearInterval(id);
   }, [paused, next]);
 
