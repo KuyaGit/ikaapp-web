@@ -98,7 +98,7 @@ export default function Hero() {
                 </div>
                 <div className="bg-[#f2f2f7] overflow-hidden">
                   <Image
-                    src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/screenshots/home.png`}
+                    src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/screenshots/home.png?v=${process.env.NEXT_PUBLIC_BUILD_ID ?? ""}`}
                     alt="ikaapp Dashboard"
                     width={390}
                     height={844}

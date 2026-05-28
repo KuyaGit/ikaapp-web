@@ -4,40 +4,41 @@ import Image from "next/image";
 import { useState, useEffect, useCallback, useRef } from "react";
 
 const bp = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const v = process.env.NEXT_PUBLIC_BUILD_ID ?? "";
 
 const screens = [
   {
-    src: `${bp}/screenshots/home.png`,
+    src: `${bp}/screenshots/home.png?v=${v}`,
     label: "Dashboard",
     description: "Payday status, income overview & period budget progress",
     glow: "13, 148, 136",   // teal-600
   },
   {
-    src: `${bp}/screenshots/savings.png`,
+    src: `${bp}/screenshots/savings.png?v=${v}`,
     label: "Savings",
     description: "Monthly savings goal with bank tags & all-time trend",
     glow: "22, 163, 74",    // green-600
   },
   {
-    src: `${bp}/screenshots/expenses.png`,
+    src: `${bp}/screenshots/expenses.png?v=${v}`,
     label: "Expenses",
     description: "Period expense tracking with over-budget alerts",
     glow: "234, 88, 12",    // orange-600
   },
   {
-    src: `${bp}/screenshots/tithes.png`,
+    src: `${bp}/screenshots/tithes.png?v=${v}`,
     label: "Tithes & Blessings",
     description: "Weekly income groups with auto tithe calculation",
     glow: "79, 70, 229",    // indigo-600
   },
   {
-    src: `${bp}/screenshots/settings.png`,
+    src: `${bp}/screenshots/settings.png?v=${v}`,
     label: "Budget Settings",
     description: "Custom categories, allocation % & pay schedule",
     glow: "2, 132, 199",    // sky-600
   },
   {
-    src: `${bp}/screenshots/income-history.png`,
+    src: `${bp}/screenshots/income-history.png?v=${v}`,
     label: "Income History",
     description: "Monthly blessing totals — tap the income card to open",
     glow: "59, 130, 246",   // blue-500
