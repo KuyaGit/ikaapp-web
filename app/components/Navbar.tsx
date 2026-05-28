@@ -23,6 +23,9 @@ export default function Navbar() {
           <Link href="/donate" className="flex items-center gap-1.5 text-rose-500 hover:text-rose-600 font-medium transition-colors">
             🙏 Love Gift
           </Link>
+          <Link href="/feedback" className="flex items-center gap-1.5 text-gray-500 hover:text-gray-900 transition-colors">
+            Report Issue
+          </Link>
         </nav>
 
         <a
