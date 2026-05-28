@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+const bp = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
@@ -14,13 +16,13 @@ export default function Navbar() {
           <Link href="/" className="hover:text-gray-900 transition-colors">
             Home
           </Link>
-          <a href="/#features" className="hover:text-gray-900 transition-colors">
+          <a href={`${bp}/#features`} className="hover:text-gray-900 transition-colors">
             Features
           </a>
-          <a href="/#screens" className="hover:text-gray-900 transition-colors">
+          <a href={`${bp}/#screens`} className="hover:text-gray-900 transition-colors">
             Screenshots
           </a>
-          <a href="/#download" className="hover:text-gray-900 transition-colors">
+          <a href={`${bp}/#download`} className="hover:text-gray-900 transition-colors">
             Download
           </a>
           <Link href="/donate" className="flex items-center gap-1.5 text-rose-500 hover:text-rose-600 font-medium transition-colors">
@@ -32,7 +34,7 @@ export default function Navbar() {
         </nav>
 
         <a
-          href="/#download"
+          href={`${bp}/#download`}
           className="inline-flex items-center gap-2 bg-teal-600 hover:bg-teal-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors"
         >
           <svg
