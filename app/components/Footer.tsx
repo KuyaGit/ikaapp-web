@@ -22,7 +22,12 @@ export default function Footer() {
           v1.3.2 &middot; iOS &amp; Android &middot; Built with Expo &amp; React Native
         </div>
 
-        <div>&copy; 2026 ikaapp. All data stays on your device.</div>
+        <div className="flex items-center gap-4">
+          <Link href="/privacy" className="hover:text-teal-600 transition-colors">
+            Privacy Policy
+          </Link>
+          <span>&copy; 2026 ikaapp. All data stays on your device.</span>
+        </div>
       </div>
     </footer>
   );
