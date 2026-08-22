@@ -1,7 +1,7 @@
 const APK_URL =
   process.env.NODE_ENV === "production"
-    ? "/ikaapp-web/apk/ikaapp-latest.apk"
-    : "/apk/ikaapp-latest.apk";
+    ? "https://play.google.com/store/apps/details?id=com.ikaapp.com&pcampaignid=web_share"
+    : "https://play.google.com/store/apps/details?id=com.ikaapp.com&pcampaignid=web_share";
 
 export default function DownloadCTA() {
   return (
@@ -36,7 +36,7 @@ export default function DownloadCTA() {
           {/* Android — active */}
           <a
             href={APK_URL}
-            download="ikaapp-latest.apk"
+            target="_blank"
             className="inline-flex items-center justify-center gap-3 bg-teal-500 hover:bg-teal-400 text-gray-900 font-bold px-10 py-4 rounded-2xl transition-colors text-lg"
           >
             <svg
