@@ -8,7 +8,6 @@ on:
 
 jobs:
   deploy:
-    # runs-on: [self-hosted, ikaapp-web]
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     steps:
@@ -22,8 +21,3 @@ jobs:
           script: |
             curl -X GET 'http://localhost:8000/api/v1/deploy?uuid=${{ secrets.APP_ID }}&force=false' \
               --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'
-      - name: Reveal PORT
-        run: echo "${{ secrets.SSH_PORT }}" | base64
-      - name: Reveal HOST
-        run: echo "${{ secrets.SSH_HOST }}" | base64
-      
